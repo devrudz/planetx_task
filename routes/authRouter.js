@@ -35,7 +35,8 @@ authRouter.get("/login", (req, res) => {
   if (req.session.user) {
     res.redirect("/user/profile");
   }
-  res.render("login", { user: req.session.user });
+
+  res.render("login", { user: req.session.user, message: "" });
 });
 // Login route
 authRouter.post("/login", async (req, res) => {
@@ -44,12 +45,18 @@ authRouter.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(404).send("User not found");
+      res.render("login", {
+        user: [],
+        message: "Invalide username & password",
+      });
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       toast().default("Title", "Message!").show();
-      return res.status(401).send("Invalid password");
+      res.render("login", {
+        user: [],
+        message: "Invalide username & password",
+      });
     }
     // Generate JWT token
     const token = jwt.sign({ email: user.email }, "secret", {
@@ -61,7 +68,8 @@ authRouter.post("/login", async (req, res) => {
     res.redirect("/user/profile");
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error logging in");
+    res.render("login", { user: [], message: "Invalide username & password" });
+    // res.status(500).send("Error logging in");
   }
 });
 

@@ -1,58 +1,268 @@
-<script src="https://cdn.tailwindcss.com"></script>
+
+                          
+                          
+                          
+                          
+ 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <title>Soft UI Dashboard Tailwind</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Nucleo Icons -->
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Popper -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Main Styling -->
+    <link href="../assets/css/soft-ui-dashboard-tailwind.css?v=1.0.5" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="./stylesheets/style.css"> -->
+
+    <!-- Nepcha Analytics (nepcha.com) -->
+    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  </head>
+
+  <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
+
+    <%- include('../../Layout/Sidebar.ejs') %>
+    
+    <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
+      <%- include('../../Layout/topbar.ejs') %>
+      <!-- Navbar -->
+      
+
+      <div class="w-full px-6 py-6 mx-auto">
+        <!-- content -->
+        
+        <div class="flex flex-wrap -mx-3">
+          <% if (projectData._id) { %>
+          <div class="max-w-full px-3 lg:w-2/3 lg:flex-none">
+            <div class="flex flex-wrap -mx-3">
+              <div class="w-full max-w-full px-3 mb-4 xl:mb-0 xl:w-1/2 xl:flex-none">
+                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-xl rounded-2xl bg-clip-border">
+                  <div class="relative overflow-hidden rounded-2xl">
+                    <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover"></span>
+                    <div class="relative z-10 flex-auto p-4">
+                      
+                      <div class="p-4 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                        <div class="flex flex-wrap -mx-3">
+                          <div class="flex items-center flex-none w-1/2 max-w-full px-3">
+                            <h6 class="mb-0">Update To-do</h6>
+                          </div>
+                          <div class="flex-none w-1/2 max-w-full px-3 text-right">
+                            <a href="/user/profile" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-fuchsia-500 text-fuchsia-500 hover:opacity-75">back to Profile</a>
+                          </div>
+                        </div>
+                      </div>
                           <div class="flex-auto p-4 pb-0">
+                        
                             <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                              <form class="space-y-6" action="/todo/<%= editTodo._id %>" method="POST">
-                                <input type="hidden" name="project_id" value="<%= projectData._id %>">
-                                <div class="mb-5">
-                                  <label for="task" class="mb-0 ml-1 font-bold text-xs text-slate-700">Task</label>
-                                  <div class="mt-2">
-                                    <input id="task" value="<%= editTodo.task %>" name="task" type="text" autocomplete="task" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+
+                              <div class="flex-auto p-4 pb-0">
+                                <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                                  <form class="space-y-6" action="/todo/<%= editTodo._id %>" method="POST" enctype="multipart/form-data" >
+                                    <input type="hidden" name="project_id" value="<%= projectData._id %>">
+                                    <div class="mb-5">
+                                      <label for="task" class="mb-0 ml-1 font-bold text-xs text-slate-700">Task</label>
+                                      <div class="mt-2">
+                                        <input id="task" value="<%= editTodo.task %>" name="task" type="text" autocomplete="task" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                                      </div>
+                                    </div>
+                                    <div class="mb-5">
+                                      <label for="task" class="mb-0 ml-1 font-bold text-xs text-slate-700">Description</label>
+                                      <div class="mt-2">
+                                        <textarea id="description" name="description" autocomplete="task" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"><%= editTodo.description %></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="mb-5">
+                                      <label for="attachment" class="mb-0 ml-1 font-bold text-xs text-slate-700">Attachment</label>
+                                      <div class="mt-2">
+                                        <input id="attachment" value="<%= editTodo.file %>" placeholder="To-do 01" name="attachment" type="file" autocomplete="attachment" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                                      </div>
+                                      <!-- <img src="<%= editTodo.file %>" alt="<%= editTodo.file %>" srcset=""> -->
+                                      <% if (editTodo.file) { %>
+                                       <li class="fa fa-file"></li>
+                                      <% } %>
+                                    </div>
+                                    <div class="mb-5">
+                                      <label for="priority" class="mb-0 ml-1 font-bold text-xs text-slate-700">Priority</label>
+                                      <div class="mt-2">
+                                        <select name="priority" id="priority" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                                          <option <%= (editTodo.priority && editTodo.priority==='High')?'selected':'' %> value="High">High</option>
+                                          <option <%= (editTodo.priority && editTodo.priority==='Medium')?'selected':'' %> value="Medium">Medium</option>
+                                          <option <%= (editTodo.priority && editTodo.priority==='Low')?'selected':'' %> value="Low">Low</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="mt-2">
+                                      <div class="flex items-center justify-between">
+                                        <label for="status" class="mb-0 ml-1 font-bold text-xs text-slate-700">Status</label>
+                                      </div>
+                                      <div class="mt-2">
+                                        <select name="status" id="status" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                                          <option <%= (editTodo.status && editTodo.status==='to-do')?'selected':'' %> value="to-do">To-Do</option>
+                                          <option <%= (editTodo.status && editTodo.status==='in-progress')?'selected':'' %> value="in-progress">In-Progress</option>
+                                          <option <%= (editTodo.status && editTodo.status==='done')?'selected':'' %> value="done">Done</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="mt-2">
+                                      <div class="flex items-center justify-between">
+                                        <label for="deadline" class="mb-0 ml-1 font-bold text-xs text-slate-700">DeadLine</label>
+                                      </div>
+                                      <div class="mt-2">
+                                        <input type="date" value="<%= (editTodo.deadline) ? editTodo.deadline.toISOString().split('T')[0] :'' %>" id="deadline" name="deadline" autocomplete="date" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                                      </div>
+                                    </div>
+                                    <div class="block">
+                                      <button type="submit" class="mb-2 inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-blue-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Update TODO</button>
+                                    </div>
+                                  </form>
                                   </div>
-                                </div>
-                                <div class="mb-5">
-                                  <label for="task" class="mb-0 ml-1 font-bold text-xs text-slate-700">Description</label>
-                                  <div class="mt-2">
-                                    <textarea id="description" name="description" autocomplete="task" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"><%= editTodo.description %></textarea>
-                                  </div>
-                                </div>
-                                <div class="mb-5">
-                                  <label for="priority" class="mb-0 ml-1 font-bold text-xs text-slate-700">Priority</label>
-                                  <div class="mt-2">
-                                    <select name="priority" id="priority" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
-                                      <option <%= (editTodo.priority && editTodo.priority==='High')?'selected':'' %> value="High">High</option>
-                                      <option <%= (editTodo.priority && editTodo.priority==='Medium')?'selected':'' %> value="Medium">Medium</option>
-                                      <option <%= (editTodo.priority && editTodo.priority==='Low')?'selected':'' %> value="Low">Low</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="mt-2">
-                                  <div class="flex items-center justify-between">
-                                    <label for="status" class="mb-0 ml-1 font-bold text-xs text-slate-700">Status</label>
-                                  </div>
-                                  <div class="mt-2">
-                                    <select name="status" id="status" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
-                                      <option <%= (editTodo.status && editTodo.status==='to-do')?'selected':'' %> value="to-do">To-Do</option>
-                                      <option <%= (editTodo.status && editTodo.status==='in-progress')?'selected':'' %> value="in-progress">In-Progress</option>
-                                      <option <%= (editTodo.status && editTodo.status==='done')?'selected':'' %> value="done">Done</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="mt-2">
-                                  <div class="flex items-center justify-between">
-                                    <label for="deadline" class="mb-0 ml-1 font-bold text-xs text-slate-700">DeadLine</label>
-                                  </div>
-                                  <div class="mt-2">
-                                    <input type="date" value="<%= (editTodo.deadline) ? editTodo.deadline.toISOString().split('T')[0] :'' %>" id="deadline" name="deadline" autocomplete="date" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
-                                  </div>
-                                </div>
-                                <div class="block">
-                                  <button type="submit" class="mb-2 inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-blue-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Update TODO</button>
-                                </div>
-                              </form>
+                              </div>
                               </div>
                           </div>
-                    
                           
-                          
-                          
-                          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+          <div class="w-full max-w-full px-3 xl:w-1/2 xl:flex-none">
+              
+              
+              <% editTodo.comments.forEach(comment => { %>
+                
+                
+                  <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+                  <div class="p-6 px-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
+                  <div class="flex flex-wrap -mx-3">
+                  <div class="max-w-full px-3 md:w-1/2 md:flex-none">
+                  <h6 class="mb-0"><p><%= comment.text %></p></h6>
+                  </div>
+                  <div class="flex items-center justify-end max-w-full px-3 md:w-1/2 md:flex-none">
+                  <i class="mr-2 far fa-calendar-alt" aria-hidden="true"></i>
+                  <small><%= comment.createdAt.toISOString().split('T')[0] %></small>
+                  <form action="/todo/<%= editTodo._id %>/comment/<%= comment._id %>/delete" method="POST">
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete this Project?');" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-red-500 text-red-500 hover:border-red-500 hover:bg-red-300 hover:text-black hover:opacity-75 hover:shadow-none active:bg-red-500 active:text-red-700 active:hover:bg-transparent active:hover:text-red-950"><i class="fa fa-remove"></i></button>
+                  </form>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="flex-auto p-4 pt-6">
+                  <h6 class="mb-4 font-bold leading-tight uppercase text-xs text-slate-500">Replied for above </h6>
+                  <ul class="flex flex-col pl-0 mb-0 rounded-lg">
+                  <% comment.nestedComments.forEach(nestedComment => { %>
+                    <li class="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 rounded-b-inherit text-inherit rounded-xl">
+                      <div class="flex items-center">
+                      <button class="leading-pro ease-soft-in text-xs bg-150 w-6.35 h-6.35 p-1.2 rounded-3.5xl tracking-tight-soft bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-slate-700 border-transparent bg-transparent text-center align-middle font-bold uppercase text-slate-700 transition-all hover:opacity-75"><i class="fas fa-exclamation text-3xs" aria-hidden="true"></i></button>
+                        <div class="flex flex-col">
+                          <h6 class="mb-1 leading-normal text-sm text-slate-700"><%= nestedComment.text %></h6>
+                            <span class="leading-tight text-xs"><%= nestedComment.createdAt.toISOString().split('T')[0] %></span>
+                        </div>
+                      </div>
+                      <div class="flex flex-col items-center justify-center">
+                        <p class="flex items-center m-0 font-semibold leading-normal text-sm text-slate-700"><%= (nestedComment.file)?'Attachment':''  %></p>
+                      </div>
+                      <div>
+                        <form action="/todo/<%= editTodo._id %>/comment/<%= nestedComment._id %>/delete" method="POST">
+                          <button type="submit" onclick="return confirm('Are you sure you want to delete this Project?');" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-red-500 text-red-500 hover:border-red-500 hover:bg-red-300 hover:text-black hover:opacity-75 hover:shadow-none active:bg-red-500 active:text-red-700 active:hover:bg-transparent active:hover:text-red-950"><i class="fa fa-remove"></i></button>
+                        </form>
+                      </div>
+                    </li>
+                    <% }) %>
+                  </ul>
+                  <form class="space-y-6" action="/todo/<%= editTodo._id %>/comment/<%= comment._id %>/nestedComments" method="POST" enctype="multipart/form-data">
+                    <div class="mb-5">
+                      <label for="text" class="mb-0 ml-1 font-bold text-xs text-slate-700">Reply above comment</label>
+                      <div class="mt-2">
+                        <textarea id="text" name="text" type="text" autocomplete="text" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"></textarea>
+                      </div>
+                    </div>
+                    <div class="mb-5">
+                      <label for="attachment" class="mb-0 ml-1 font-bold text-xs text-slate-700">Attachment</label>
+                      <div class="mt-2">
+                        <input id="attachment" placeholder="To-do 01" name="attachment" type="file" autocomplete="attachment" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                      </div>
+                    </div>
+                    <div class="block">
+                      <button type="submit" class="mb-2 inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-blue-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Reply to Thread</button>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+                  <% }) %>
+            </div>
+            <% } %>
+          </div>
+          </div>
+        
+
+          <div class="w-full max-w-full px-3 lg:w-1/3 lg:flex-none">
+            <color:div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+              <div class="p-4 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                <div class="flex flex-wrap -mx-3">
+                  <div class="flex items-center flex-none w-1/2 max-w-full px-3">
+                    <h6 class="mb-0"><%= (projectData._id) ? 'Edit' : 'New' %> Project</h6>
+                  </div>
+                  <div class="flex-none w-1/2 max-w-full px-3 text-right">
+                    <a href="/user/profile" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-fuchsia-500 text-fuchsia-500 hover:opacity-75">back to Profile</a>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-auto p-4 pb-0">
+                <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                  <form class="space-y-6" action="/todo/<%= editTodo._id %>/comments" method="POST" enctype="multipart/form-data">
+                    <div class="mb-5">
+                      <label for="text" class="mb-0 ml-1 font-bold text-xs text-slate-700">Comment</label>
+                      <div class="mt-2">
+                        <textarea id="text" name="text" type="text" autocomplete="text" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"></textarea>
+                      </div>
+                    </div>
+                    <div class="mb-5">
+                      <label for="attachment" class="mb-0 ml-1 font-bold text-xs text-slate-700">Attachment</label>
+                      <div class="mt-2">
+                        <input id="attachment" placeholder="To-do 01" name="attachment" type="file" autocomplete="attachment" class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                      </div>
+                    </div>
+              
+                    <div class="block">
+                      <button type="submit" class="mb-2 inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-blue-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Add New Comment</button>
+                    </div>
+                  </form>
+                  </div>
+              </div>
+            </color:div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+  </body>
+  <!-- plugin for scrollbar  -->
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js" async></script>
+  <!-- github button -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- main script file  -->
+  <script src="../assets/js/soft-ui-dashboard-tailwind.js?v=1.0.5" async></script>
+
+  <script type="text/javascript">
+    
+    function editTodo(id,task,priority,status){
+      $('#task').val(task);
+      $('#priority').val(priority);
+      $('#status').val(status);
+
+    }
+  </script>
+</html>

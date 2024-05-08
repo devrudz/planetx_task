@@ -10,7 +10,8 @@ const todosRouter = require("./routes/todos");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(express.json());
+app.use(bodyParser.json());
 app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
 connectDB();
 
@@ -19,6 +20,7 @@ app.use("*/css", express.static("public/css"));
 app.use("*/stylesheets", express.static("public/stylesheets"));
 app.use("*/assets", express.static("public/assets"));
 app.use("*/img", express.static("public/img"));
+app.use("*/uploads", express.static("uploads"));
 
 app.use("/user", authenticateToken, router);
 app.use("/project", authenticateToken, projectRouter);
