@@ -1,18 +1,4 @@
 
-          <!--
-=========================================================
-* Soft UI Dashboard Tailwind - v1.0.5
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-tailwind
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <title>Soft UI Dashboard Tailwind</title>
+    <title>Project</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -224,7 +210,7 @@
                     <div class="mb-5">
                       <label for="title" class="mb-0 ml-1 font-bold text-xs text-slate-700">Title</label>
                       <div class="mt-2">
-                        <input id="title" value="<%= (projectData._id)?projectData.title:''  %>" name="title" type="text" autocomplete="title" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                        <input id="title" placeholder="Enter Project name" value="<%= (projectData._id)?projectData.title:''  %>" name="title" type="text" autocomplete="title" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
                       </div>
                     </div>
                     <div class="mt-2">
@@ -232,7 +218,11 @@
                         <label for="status" class="mb-0 ml-1 font-bold text-xs text-slate-700">Status</label>
                       </div>
                       <div class="mt-2">
-                        <input id="status" value="<%= (projectData._id)?projectData.status:''  %>" name="status" type="status" autocomplete="current-status" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                        <select id="status" value="<%= (projectData._id)?projectData.status:''  %>" name="status" type="status" autocomplete="current-status" required class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow">
+                        <option value="">Select status</option>
+                        <option value="1" <%= (projectData && projectData.status ===1)?'selected':''  %>>Active</option>
+                        <option value="0" <%= (projectData && projectData.status ===0)?'selected':''  %>>De-Active</option>
+                        </select>
                       </div>
                     </div>
               
