@@ -73,10 +73,12 @@ todosRouter.get("/:id", async (req, res) => {
   let slug = req.params.id;
   const user = req.session.user;
   try {
-    const editTodo = await Todos.findById({ _id: slug }).populate({
-      path: "comments",
-      populate: { path: "nestedComments" },
-    });
+    const editTodo = await Todos.findById({ _id: slug })
+      .populate({
+        path: "comments",
+        populate: { path: "nestedComments" },
+      })
+      .sort({ createdAt: 1 });
     const projectData = await Project.findById({ _id: editTodo.projectId });
     res.render("todos/todo", {
       editTodo: editTodo,
@@ -151,31 +153,10 @@ todosRouter.post(
 
       const { text } = req.body;
       const newComment = new Comment({ text });
-      // if (req.file) {
-      //   newComment.file = req.file.path; // Save file path in the comment document
-      // }
       if (req.file) {
-        // Use fs.stat() to check if the file exists
-        fs.stat(newComment.file, (err, stats) => {
-          if (err) {
-            if (err.code === "ENOENT") {
-              console.log("File does not exist");
-            } else {
-              console.error("Error occurred while checking file status:", err);
-            }
-          } else {
-            if (stats.isFile()) {
-              // Remove existing file
-              if (newComment.file) {
-                // fs.unlinkSync(path.join(__dirname, "public", newComment.file));
-                fs.unlinkSync(newComment.file);
-              }
-            } else {
-              console.log("Path is not a file");
-            }
-          }
-        });
+        newComment.file = req.file.path; // Save file path in the comment document
       }
+
       await newComment.save();
 
       todo.comments.push(newComment);

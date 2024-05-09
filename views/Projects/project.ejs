@@ -252,6 +252,7 @@
                       <span class="mb-2 leading-tight text-xs">Priority: <span class="font-semibold  <%= (todo.priority==='High') ? 'text-red-500' : ((todo.priority==='Medium') ? 'text-fuchsia-500' : 'text-lime-500') %> sm:ml-2"><%= todo.priority %></span></span>
                       <span class="mb-2 leading-tight text-xs">status: <span class="font-semibold  <%= (todo.status==='to-do') ? 'text-red-500' : ((todo.status==='in-progress') ? 'text-fuchsia-500' : 'text-lime-500') %> sm:ml-2"><%= todo.status %></span></span>
                       <span class="mb-2 leading-tight text-xs">DeadLine: <span class="font-semibold text-slate-700 sm:ml-2"><%= todo.deadline  %></span></span>
+                      <span class="mb-2 leading-tight text-xs">Attachment: <span class="font-semibold text-slate-700 sm:ml-2"> <i class="fa fa-file"></i> <%= todo.file.split('\\')[1];  %></span></span>
                     </div>
                     <div class="ml-auto text-right flex">
                       <form action="/todo/<%= todo._id  %>/delete" method="POST">
